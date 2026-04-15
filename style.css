@@ -241,14 +241,12 @@ body {
 }
 
 .message-body {
-    flex: 1;
-    font-size: clamp(13px, 2.8vw, 15px);
-    line-height: 1.7;
-    color: #444;
-    font-weight: 400;
-    margin-bottom: 25px;
-    text-align: justify;
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: 70vh;
 }
+
 
 .message-body p {
     margin-bottom: 16px;
