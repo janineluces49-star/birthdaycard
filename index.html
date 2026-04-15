@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <h1 class="cover-title">Happy Birthday!</h1>
-                <p class="cover-subtitle">Tap to open your gift 🎁</p>
+                <p class="cover-subtitle">Buksan mo t*nga!🎁</p>
             </div>
 
             <!-- Back Content -->
@@ -40,6 +40,7 @@
                     <div class="message-body">
                         <p>Since wara akong kwarta pangregalo saimo, ini na lang regalo ko. Dae kana magreklamo kin nata sa website pa ko nagmessage saimo. Atleast for the first time nagtao man ako ki message, online nga lang. Pero ano pa ang silbi kang pagiging IT student ko HAHAHAHAHAH.</p>
                         
+                        <p>(Btw, pasensya sa design, rush kaya paggibo ko. Don't worry next time upgraded na design kaini HAHAHAHAH) </p>
                         <p>But anyways, sa kahaluyan ta nang magbarkada, thankful ako ta namidbidan taka. Ta kung bako ko garo kamo naging barkada ni tubo, siguro hanggang ngunyan dae ko kaya iexpress o ipailing sa iba ang tunay kong ugali.</p>
                         
                         <p>Ta sa matod kamo talaga nagpaboost ki confidence ko kaya ang ugali ko arog na kaini ngunyan HAHAHAHAH. Grabe man naexperience ko sa buhay kaiba kamo, and ito talaga ang piga cherish ko hanggang ngunyan.</p>
@@ -64,7 +65,7 @@
         </div>
         
         <!-- Floating particles -->
-        <div class="particles">
+        <div class="partices">
             <div class="particle"></div>
             <div class="particle"></div>
             <div class="particle"></div>
@@ -83,11 +84,10 @@
         card.classList.toggle('flipped');
     });
     
-   const frontFace = card.querySelector('.front');
-frontFace.addEventListener('touchmove', function(e) {
-    e.preventDefault();
-}, { passive: false });
-
+    // Prevent scrolling when interacting with card
+    card.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, { passive: false });
     
     // Keyboard support
     document.addEventListener('keydown', function(e) {
