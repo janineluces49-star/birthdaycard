@@ -83,10 +83,11 @@
         card.classList.toggle('flipped');
     });
     
-    // Prevent scrolling when interacting with card
-    card.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-    }, { passive: false });
+   const frontFace = card.querySelector('.front');
+frontFace.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+}, { passive: false });
+
     
     // Keyboard support
     document.addEventListener('keydown', function(e) {
