@@ -74,20 +74,39 @@
         </div>
     </div>
 
-    <script>
-
-    document.addEventListener('DOMContentLoaded', function() {
+<script>
+document.addEventListener('DOMContentLoaded', function() {
     const card = document.getElementById('birthdayCard');
     
-    // Touch/Tap to flip
-    card.addEventListener('click', function() {
-        card.classList.toggle('flipped');
+    // Touch/Tap to flip (only on tap, not scroll)
+    let touchStartY = 0;
+    let touchEndY = 0;
+    
+    card.addEventListener('touchstart', function(e) {
+        touchStartY = e.changedTouches[0].screenY;
     });
     
-    // Prevent scrolling when interacting with card
-    card.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-    }, { passive: false });
+    card.addEventListener('touchend', function(e) {
+        touchEndY = e.changedTouches[0].screenY;
+        handleTouchSwipe();
+    });
+    
+    function handleTouchSwipe() {
+        const swipeDistance = touchEndY - touchStartY;
+        
+        // Only flip on short taps (less than 30px swipe)
+        // Allow scrolling for longer swipes
+        if (Math.abs(swipeDistance) < 30) {
+            card.classList.toggle('flipped');
+        }
+    }
+    
+    // Click to flip (for desktop)
+    card.addEventListener('click', function(e) {
+        // Don't flip if clicking on scrollable content
+        if (e.target.closest('.message-body')) return;
+        card.classList.toggle('flipped');
+    });
     
     // Keyboard support
     document.addEventListener('keydown', function(e) {
@@ -121,8 +140,8 @@ function createConfetti() {
                 confetti.remove();
             }, 5000);
         }, i * 20);
-    }
+    }    
 }
-    </script>
+</script>
 </body>
 </html>
