@@ -32,7 +32,7 @@
                 <p class="cover-subtitle">Buksan mo t*nga!🎁</p>
             </div>
 
-            <!-- Back Content - FIXED LAYOUT -->
+            <!-- Back Content -->
             <div class="card-face back">
                 <div class="message-content">
                     <h2 class="birthday-title">Happy Birthday Aswang! 🎉</h2>
@@ -40,7 +40,7 @@
                     <div class="message-body">
                         <p>Since wara akong kwarta pangregalo saimo, ini na lang regalo ko. Dae kana magreklamo kin nata sa website pa ko nagmessage saimo. Atleast for the first time nagtao man ako ki message, online nga lang. Pero ano pa ang silbi kang pagiging IT student ko HAHAHAHAHAH.</p>
                         
-                        <p>(Btw, pasensya sa design, rush kaya paggibo ko. Don't worry next time upgraded na design kaini HAHAHAHAH)</p>
+                        <p>(Btw, pasensya sa design, rush kaya paggibo ko. Don't worry next time upgraded na design kaini HAHAHAHAH) </p>
                         <p>But anyways, sa kahaluyan ta nang magbarkada, thankful ako ta namidbidan taka. Ta kung bako ko garo kamo naging barkada ni tubo, siguro hanggang ngunyan dae ko kaya iexpress o ipailing sa iba ang tunay kong ugali.</p>
                         
                         <p>Ta sa matod kamo talaga nagpaboost ki confidence ko kaya ang ugali ko arog na kaini ngunyan HAHAHAHAH. Grabe man naexperience ko sa buhay kaiba kamo, and ito talaga ang piga cherish ko hanggang ngunyan.</p>
@@ -63,51 +63,66 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Floating particles -->
+        <div class="partices">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const card = document.getElementById('birthdayCard');
-        
-        // Touch/Tap to flip
-        card.addEventListener('click', function() {
-            card.classList.toggle('flipped');
-        });
-        
-        // Keyboard support
-        document.addEventListener('keydown', function(e) {
-            if (e.code === 'Space' || e.code === 'Enter') {
-                e.preventDefault();
-                card.classList.toggle('flipped');
-            }
-        });
-        
-        // Confetti on first flip
-        let hasFlipped = false;
-        card.addEventListener('transitionend', function() {
-            if (!hasFlipped && card.classList.contains('flipped')) {
-                hasFlipped = true;
-                createConfetti();
-            }
-        });
-    });
 
-    function createConfetti() {
-        for (let i = 0; i < 50; i++) {
-            setTimeout(() => {
-                const confetti = document.createElement('div');
-                confetti.className = 'particle confetti';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
-                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                document.querySelector('.container').appendChild(confetti);
-                
-                setTimeout(() => {
-                    confetti.remove();
-                }, 5000);
-            }, i * 20);
+    document.addEventListener('DOMContentLoaded', function() {
+    const card = document.getElementById('birthdayCard');
+    
+    // Touch/Tap to flip
+    card.addEventListener('click', function() {
+        card.classList.toggle('flipped');
+    });
+    
+    // Prevent scrolling when interacting with card
+    card.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, { passive: false });
+    
+    // Keyboard support
+    document.addEventListener('keydown', function(e) {
+        if (e.code === 'Space' || e.code === 'Enter') {
+            e.preventDefault();
+            card.classList.toggle('flipped');
         }
+    });
+    
+    // Add confetti effect on first flip
+    let hasFlipped = false;
+    card.addEventListener('transitionend', function() {
+        if (!hasFlipped && card.classList.contains('flipped')) {
+            hasFlipped = true;
+            createConfetti();
+        }
+    });
+});
+
+function createConfetti() {
+    for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+            const confetti = document.createElement('div');
+            confetti.className = 'particle confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.querySelector('.container').appendChild(confetti);
+            
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }, i * 20);
     }
+}
     </script>
 </body>
 </html>
