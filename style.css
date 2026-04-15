@@ -214,18 +214,21 @@ body {
     text-align: center;
 }
 
-/* Back Face */
 .back {
     transform: rotateY(180deg);
     background: linear-gradient(145deg, #fff8f0 0%, #fff4e6 100%);
-    overflow-y: auto;
+    overflow-y: auto;  /* ✅ Keep this */
     padding: 30px 25px;
+    /* Add these for better mobile scrolling */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
 }
 
 .message-content {
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow: hidden;  /* ✅ Prevent overflow */
 }
 
 .birthday-title {
@@ -242,12 +245,15 @@ body {
 
 .message-body {
     flex: 1;
+    overflow-y: auto;  /* ✅ Enable scrolling here */
     font-size: clamp(13px, 2.8vw, 15px);
     line-height: 1.7;
     color: #444;
     font-weight: 400;
     margin-bottom: 25px;
     text-align: justify;
+    padding-right: 5px;  /* ✅ Small padding for scrollbar */
+    -webkit-overflow-scrolling: touch;  /* ✅ Smooth iOS scrolling */
 }
 
 .message-body p {
@@ -301,7 +307,7 @@ body {
 }
 
 /* Particles */
-.particles {
+.partices {
     position: fixed;
     top: 0;
     left: 0;
